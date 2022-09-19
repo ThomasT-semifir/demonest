@@ -12,6 +12,10 @@ export class User {
   lastName: string;
   @Prop()
   email: string;
+  @Prop({ default: false })
+  isAdmin: boolean;
+  @Prop()
+  fbPage: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
