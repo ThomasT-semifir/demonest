@@ -1,7 +1,8 @@
 import { TestService } from './test.service';
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { User } from './schemas/user.schema';
 
 @Controller('test')
 export class TestController {
@@ -18,7 +19,7 @@ export class TestController {
   }
 
   @Post()
-  create() {
-    return "created"
+  create(@Body() user: User): Promise<User> {
+    return this.testService.create(user);
   }
 }

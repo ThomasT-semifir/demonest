@@ -6,7 +6,12 @@ import { Model } from 'mongoose';
 @Injectable()
 export class TestService {
   constructor(@InjectModel(User.name) private users: Model<UserDocument>) {}
+
   findAll() {
     return this.users.find();
+  }
+
+  create(user: User): Promise<User> {
+    return this.users.create(user);
   }
 }
